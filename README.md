@@ -1,6 +1,12 @@
-#### Basic mobile FPS controller
+#### Basic mobile FPS and TPS controller
 
-A simple first and third person movement controller for mobile games built in Unity, with multitouch support and using the CharacterController component.
+A simple first and third person movement controllers for mobile games built in Unity, with multitouch support and using the CharacterController component.
 
-[For a code walkthrough and explanation, use this tutorial]
-https://youtu.be/lYJtTYveYg0
+#### FirstPersonController.cs
+The name is quite self explanatory
+The script is explained in – and was created for – this tutorial: https://www.youtube.com/watch?v=lYJtTYveYg0&feature=youtu.be
+
+#### PlayerController.cs
+Expansion on the first script to also support third person camera controls.
+The script is explained in – and was created for – this tutorial: https://www.youtube.com/watch?v=HMRXj6hbE98
+
