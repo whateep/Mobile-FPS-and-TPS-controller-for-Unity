@@ -10,3 +10,6 @@ The script is explained in – and was created for – this tutorial: https://ww
 Expansion on the first script to also support third person camera controls.
 The script is explained in – and was created for – this tutorial: https://www.youtube.com/watch?v=HMRXj6hbE98
 
+#### BobbingCompatibleFirstPersonController.cs
+This script expands the first person controller to work with the camera bobbing script
+The camera bobbing script and this scripts usage can be found in this tutorial: //coming soon...
