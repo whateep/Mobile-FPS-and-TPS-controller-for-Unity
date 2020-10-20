@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public static PlayerController instance;
+
     public enum PlayerControlMode { FirstPerson, ThirdPerson}
     public PlayerControlMode mode;
 
@@ -26,23 +28,27 @@ public class PlayerController : MonoBehaviour
 
     [Header("Third person camera settings")]
     public LayerMask cameraObstacleLayers;
-    float maxCameraDistance;
-    bool isMoving;
+    private float maxCameraDistance;
+    private bool isMoving;
 
     // Touch detection
-    int leftFingerId, rightFingerId;
-    float halfScreenWidth;
+    private int leftFingerId, rightFingerId;
+    private float halfScreenWidth;
 
     // Camera control
-    Vector2 lookInput;
-    float cameraPitch;
+    private Vector2 lookInput;
+    private float cameraPitch;
 
     // Player movement
-    Vector2 moveTouchStartPosition;
-    Vector2 moveInput;
+    private Vector2 moveTouchStartPosition;
+    private Vector2 moveInput;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake(){
+        if(instance == null) instance = this;
+        else if(instance != this) Destroy(gameObject);
+    }
+
+    private void Start()
     {
         // id = -1 means the finger is not being tracked
         leftFingerId = -1;
@@ -64,8 +70,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         // Handles input
         GetTouchInput();
@@ -85,12 +90,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         if (mode == PlayerControlMode.ThirdPerson) MoveCamera();
     }
 
-    void GetTouchInput() {
+    private void GetTouchInput() {
         // Iterate through all the detected touches
         for (int i = 0; i < Input.touchCount; i++)
         {
@@ -160,7 +165,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void LookAround()
+    private void LookAround()
     {
 
         switch (mode)
@@ -186,7 +191,7 @@ public class PlayerController : MonoBehaviour
         transform.Rotate(transform.up, lookInput.x);
     }
 
-    void MoveCamera() {
+    private void MoveCamera() {
 
         Vector3 rayDir = tpCameraTransform.position - cameraPole.position;
 
@@ -201,7 +206,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void Move() {
+    private void Move() {
 
         // Don't move if the touch delta is shorter than the designated dead zone
         if (moveInput.sqrMagnitude <= moveInputDeadZone)
@@ -218,6 +223,12 @@ public class PlayerController : MonoBehaviour
         Vector2 movementDirection = moveInput.normalized * moveSpeed * Time.deltaTime;
         // Move relatively to the local transform's direction
         characterController.Move(transform.right * movementDirection.x + transform.forward * movementDirection.y);
+    }
+    
+    public void ResetInput(){
+        // id = -1 means the finger is not being tracked
+        leftFingerId = -1;
+        rightFingerId = -1;
     }
 
 }
