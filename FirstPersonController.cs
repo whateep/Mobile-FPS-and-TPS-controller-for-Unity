@@ -5,25 +5,25 @@ using UnityEngine;
 public class FirstPersonController : MonoBehaviour
 {
     // References
-    public Transform cameraTransform;
-    public CharacterController characterController;
+    [SerializeField] private Transform cameraTransform;
+    [SerializeField] privatepublic CharacterController characterController;
 
     // Player settings
-    public float cameraSensitivity;
-    public float moveSpeed;
-    public float moveInputDeadZone;
+    [SerializeField] private float cameraSensitivity;
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private float moveInputDeadZone;
 
     // Touch detection
-    int leftFingerId, rightFingerId;
-    float halfScreenWidth;
+    private int leftFingerId, rightFingerId;
+    private float halfScreenWidth;
 
     // Camera control
-    Vector2 lookInput;
-    float cameraPitch;
+    private Vector2 lookInput;
+    private float cameraPitch;
 
     // Player movement
-    Vector2 moveTouchStartPosition;
-    Vector2 moveInput;
+    private Vector2 moveTouchStartPosition;
+    private Vector2 moveInput;
 
     // Start is called before the first frame update
     void Start()
