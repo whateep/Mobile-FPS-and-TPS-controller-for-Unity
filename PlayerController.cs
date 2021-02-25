@@ -11,23 +11,23 @@ public class PlayerController : MonoBehaviour
 
     // References
     [Space(20)]
-    public CharacterController characterController;
+    [SerializeField] private CharacterController characterController;
     [Header("First person camera")]
-    public Transform fpCameraTransform;
+    [SerializeField] private Transform fpCameraTransform;
     [Header("Third person camera")]
-    public Transform cameraPole;
-    public Transform tpCameraTransform;
-    public Transform graphics;
+    [SerializeField] private Transform cameraPole;
+    [SerializeField] private Transform tpCameraTransform;
+    [SerializeField] private Transform graphics;
     [Space(20)]
 
     // Player settings
     [Header("Settings")]
-    public float cameraSensitivity;
-    public float moveSpeed;
-    public float moveInputDeadZone;
+    [SerializeField] private float cameraSensitivity;
+    [SerializeField] private float moveSpeed;
+    [SerializeField] private float moveInputDeadZone;
 
     [Header("Third person camera settings")]
-    public LayerMask cameraObstacleLayers;
+    [SerializeField] private LayerMask cameraObstacleLayers;
     private float maxCameraDistance;
     private bool isMoving;
 
