@@ -6,7 +6,7 @@ public class FirstPersonController : MonoBehaviour
 {
     // References
     [SerializeField] private Transform cameraTransform;
-    [SerializeField] privatepublic CharacterController characterController;
+    [SerializeField] private CharacterController characterController;
 
     // Player settings
     [SerializeField] private float cameraSensitivity;
